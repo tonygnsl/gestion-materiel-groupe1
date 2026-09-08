@@ -1,0 +1,108 @@
+[
+ {
+ "id": 1,
+ "designation": "Poste administratif A",
+ "constructeur": "Dell",
+ "famille": "Portable",
+ "etatParc": "Opérationnel",
+ "implantation": "Bâtiment A - 101",
+ "dateAcquisition": "2023-09-15"
+ },
+ {
+ "id": 2,
+ "designation": "Poste comptabilité B",
+ "constructeur": "HP",
+ "famille": "Fixe",
+ "etatParc": "Révision",
+ "implantation": "Bâtiment A - 104",
+ "dateAcquisition": "2021-06-12"
+ },
+ {
+ "id": 3,
+ "designation": "Imprimante accueil",
+ "constructeur": "Brother",
+ "famille": "Impression",
+ "etatParc": "Opérationnel",
+ "implantation": "Hall principal",
+ "dateAcquisition": "2022-03-20"
+}
+,
+
+{ 
+"id":4,
+ "designation": "Serveur fichiers",
+ "constructeur": "HPE",
+ "famille": "Serveur",
+ "etatParc": "Opérationnel",
+ "implantation": "Salle informatique",
+ "dateAcquisition": "2020-11-05"
+}
+,
+ 
+{
+ "id":5,
+ "designation": "Portable direction",
+ "constructeur": "Lenovo",
+ "famille": "Portable",
+ "etatParc": "Immobilisé",
+ "implantation": "Atelier technique",
+ "dateAcquisition": "2019-08-27"
+ 
+}
+,
+ 
+{
+ "id":6,
+ "designation": "Écran bureau 204",
+ "constructeur": "Samsung",
+ "famille": "Affichage",
+ "etatParc": "Opérationnel",
+ "implantation": "Bâtiment B - 204",
+ "dateAcquisition": "2024-01-18"
+ 
+}
+,
+ 
+{
+ "id":7,
+ "designation": "Poste commercial C",
+ "constructeur": "Acer",
+ "famille": "Portable",
+ "etatParc": "Opérationnel",
+ "implantation": "Bâtiment B - 207",
+ "dateAcquisition": "2023-04-11"
+ 
+}
+,
+ 
+{
+ "id":8,
+ "designation": "Imprimante service RH",
+ "constructeur": "Canon",
+ "famille": "Impression",
+ "etatParc": "Révision",
+ "implantation": "Bâtiment A - 110",
+ "dateAcquisition": "2021-10-09"
+ 
+}
+,
+ 
+{
+ "id":9,
+ "designation": "Serveur sauvegarde",
+ "constructeur": "Lenovo",
+ "famille": "Serveur",
+ "etatParc": "Opérationnel",
+ "implantation": "Salle informatique",
+ "dateAcquisition": "2022-12-02"
+ },
+ {
+ "id": 10,
+ "designation": "Écran accueil",
+ "constructeur": "LG",
+ "famille": "Affichage",
+ "etatParc": "Immobilisé",
+ "implantation": "Hall principal",
+ "dateAcquisition": "2018-05-16"
+ }
+]
