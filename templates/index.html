@@ -1,57 +1,34 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventaire du Matériel Informatique</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <main>
-        <h1>Liste du Parc Informatique</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Désignation</th>
-                    <th>Constructeur</th>
-                    <th>Famille</th>
-                    <th>État du parc</th>
-                    <th>Implantation</th>
-                    <th>Date d'acquisition</th>
-                </tr>
-            </thead>
-            <tbody id="table-body">
-            </tbody>
-        </table>
-    </main>
+{% block title %}Accueil{% endblock %}
 
-    <script>
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                const tableBody = document.getElementById('table-body');
-                let lignesHTML = '';
+{% block content %}
 
-                // On crée une ligne de tableau pour chaque élément de la base de données
-                for(let materiel of data) {
-                    lignesHTML += `
-                        <tr>
-                            <td>${materiel.id}</td>
-                            <td>${materiel.designation}</td>
-                            <td>${materiel.constructeur}</td>
-                            <td>${materiel.famille}</td>
-                            <td>${materiel.etatParc}</td>
-                            <td>${materiel.implantation}</td>
-                            <td>${materiel.dateAcquisition}</td>
-                        </tr>
-                    `;
-                }
-                tableBody.innerHTML = lignesHTML;
-            })
-            .catch(error => console.error('Erreur lors de la lecture du fichier data.json :', error));
-    </script>
+<h2>Liste des éléments</h2>
 
-</body>
-</html>
+<p>
+    Cette page présente les informations disponibles
+    dans l'application.
+</p>
+
+<div class="liste">
+
+    {% for element in donnees %}
+
+    <article class="carte">
+
+        <h3>{{ element.reference }}</h3>
+
+        <p>{{ element.auteur }}</p>
+
+        <a href="{{ url_for('detail', id=element.id) }}">
+            Voir le détail
+        </a>
+
+    </article>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
