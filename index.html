@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion du Parc Informatique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <h1>Inventaire du Matériel</h1>
+
+        <table class="table-materiel">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Désignation</th>
+                    <th>Constructeur</th>
+                    <th>Famille</th>
+                    <th>État du parc</th>
+                    <th>Implantation</th>
+                    <th>Date d'acquisition</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- C'est ici que tu dois faire ta boucle sur ton JSON -->
+                <tr>
+                    <td>{{ id }}</td>
+                    <td>{{ designation }}</td>
+                    <td>{{ constructeur }}</td>
+                    <td>{{ famille }}</td>
+                    <td>{{ etatParc }}</td>
+                    <td>{{ implantation }}</td>
+                    <td>{{ dateAcquisition }}</td>
+                </tr>
+                <!-- Fin de la boucle -->
+            </tbody>
+        </table>
+    </main>
+
+</body>
+</html>
