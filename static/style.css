@@ -53,3 +53,9 @@ footer {
     background-color: #004458;
     color: white;
 }
+
+span {
+    font-weight: bold;
+    color: #064c8d;
+    line-height: 1.5;
+}
