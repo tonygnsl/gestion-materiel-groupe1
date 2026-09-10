@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion du Parc Informatique</title>
+    <title>Inventaire du Matériel Informatique</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <main>
-        <h1>Inventaire du Matériel</h1>
-
-        <table class="table-materiel">
+        <h1>Liste du Parc Informatique</h1>
+        <table>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -23,21 +22,36 @@
                     <th>Date d'acquisition</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- C'est ici que tu dois faire ta boucle sur ton JSON -->
-                <tr>
-                    <td>{{ id }}</td>
-                    <td>{{ designation }}</td>
-                    <td>{{ constructeur }}</td>
-                    <td>{{ famille }}</td>
-                    <td>{{ etatParc }}</td>
-                    <td>{{ implantation }}</td>
-                    <td>{{ dateAcquisition }}</td>
-                </tr>
-                <!-- Fin de la boucle -->
+            <tbody id="table-body">
             </tbody>
         </table>
     </main>
+
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('table-body');
+                let lignesHTML = '';
+
+                // On crée une ligne de tableau pour chaque élément de la base de données
+                for(let materiel of data) {
+                    lignesHTML += `
+                        <tr>
+                            <td>${materiel.id}</td>
+                            <td>${materiel.designation}</td>
+                            <td>${materiel.constructeur}</td>
+                            <td>${materiel.famille}</td>
+                            <td>${materiel.etatParc}</td>
+                            <td>${materiel.implantation}</td>
+                            <td>${materiel.dateAcquisition}</td>
+                        </tr>
+                    `;
+                }
+                tableBody.innerHTML = lignesHTML;
+            })
+            .catch(error => console.error('Erreur lors de la lecture du fichier data.json :', error));
+    </script>
 
 </body>
 </html>
