@@ -4,6 +4,7 @@
 
 {% block content %}
 
+<img src="Carnus.png" alt="carnus" class="image">
 <h2>Liste des éléments</h2>
 
 <p>
@@ -22,14 +23,6 @@
         <p><span>constructeur :</span> {{ element.constructeur }}</p>
         
         <p><span>famille :</span> {{ element.famille }}</p>
-
-        <p><span>état du parc :</span> {{ element.etatParc }}</p>
-
-        <p><span>implantation :</span> {{ element.implantation }}</p>
-            
-        <p><span>date d'acquisition :</span> {{ element.dateAcquisition }}</p>
-
-
 
         <a href="{{ url_for('detail', id=element.id) }}">
             Voir le détail

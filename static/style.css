@@ -59,3 +59,8 @@ span {
     color: #064c8d;
     line-height: 1.5;
 }
+
+strong {
+    font-weight: bold;
+    color: #064c8d;
+}
