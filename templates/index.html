@@ -43,6 +43,8 @@
 
         <p><span>état :</span> {{ element.etatParc }}</p>
 
+        <p><span>date d'acquisition :</span> {{ element.dateAcquisition[8:10] }}/{{ element.dateAcquisition[5:7] }}/{{ element.dateAcquisition[0:4] }}</p>
+
         <a href="{{ url_for('detail', id=element.id) }}">
             Voir le détail
         </a>
@@ -58,31 +60,17 @@
 </p>
 
 <script>
-    // Cette fonction est appelée à chaque fois que l'utilisateur change la valeur du menu
     function filtrer() {
-
-        // On récupère la valeur choisie dans le menu déroulant
         var valeurChoisie = document.getElementById('filtre').value;
 
-        // On récupère toutes les cartes affichées dans la page
         var cartes = document.getElementsByClassName('carte');
-
-        // Ce compteur sert à savoir si au moins une carte est visible
         var nombreVisible = 0;
 
-        // On parcourt toutes les cartes une par une
         for (var i = 0; i < cartes.length; i++) {
-
             var carte = cartes[i];
-
-            // On lit les attributs data-etat et data-famille de la carte
             var etatCarte = carte.getAttribute('data-etat');
             var familleCarte = carte.getAttribute('data-famille');
 
-            // La carte correspond si :
-            // - aucune valeur n'est choisie (on affiche tout)
-            // - ou la valeur choisie est l'état de la carte
-            // - ou la valeur choisie est la famille de la carte
             if (valeurChoisie === "" || valeurChoisie === etatCarte || valeurChoisie === familleCarte) {
                 carte.style.display = "block";
                 nombreVisible = nombreVisible + 1;
@@ -91,7 +79,6 @@
             }
         }
 
-        // Si aucune carte n'est visible, on affiche le message "aucun résultat"
         if (nombreVisible === 0) {
             document.getElementById('aucun-resultat').style.display = "block";
         } else {
