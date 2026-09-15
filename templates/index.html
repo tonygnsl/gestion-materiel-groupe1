@@ -12,17 +12,36 @@
     dans l'application.
 </p>
 
+<div class="filtres">
+
+    <div class="filtre-groupe">
+        <label for="filtre">Filtrer par :</label>
+        <select id="filtre" onchange="filtrer()">
+            <option value="">Tout afficher</option>
+            {% for etat in donnees|map(attribute='etatParc')|unique %}
+            <option value="{{ etat }}">{{ etat }}</option>
+            {% endfor %}
+            {% for famille in donnees|map(attribute='famille')|unique %}
+            <option value="{{ famille }}">{{ famille }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+</div>
+
 <div class="liste">
 
     {% for element in donnees %}
 
-    <article class="carte">
+    <article class="carte" data-etat="{{ element.etatParc }}" data-famille="{{ element.famille }}">
 
         <h3>{{ element.designation }}</h3>
 
         <p><span>constructeur :</span> {{ element.constructeur }}</p>
         
         <p><span>famille :</span> {{ element.famille }}</p>
+
+        <p><span>état :</span> {{ element.etatParc }}</p>
 
         <a href="{{ url_for('detail', id=element.id) }}">
             Voir le détail
@@ -33,5 +52,52 @@
     {% endfor %}
 
 </div>
+
+<p id="aucun-resultat" class="aucun-resultat" style="display: none;">
+    Aucun équipement ne correspond aux filtres sélectionnés.
+</p>
+
+<script>
+    // Cette fonction est appelée à chaque fois que l'utilisateur change la valeur du menu
+    function filtrer() {
+
+        // On récupère la valeur choisie dans le menu déroulant
+        var valeurChoisie = document.getElementById('filtre').value;
+
+        // On récupère toutes les cartes affichées dans la page
+        var cartes = document.getElementsByClassName('carte');
+
+        // Ce compteur sert à savoir si au moins une carte est visible
+        var nombreVisible = 0;
+
+        // On parcourt toutes les cartes une par une
+        for (var i = 0; i < cartes.length; i++) {
+
+            var carte = cartes[i];
+
+            // On lit les attributs data-etat et data-famille de la carte
+            var etatCarte = carte.getAttribute('data-etat');
+            var familleCarte = carte.getAttribute('data-famille');
+
+            // La carte correspond si :
+            // - aucune valeur n'est choisie (on affiche tout)
+            // - ou la valeur choisie est l'état de la carte
+            // - ou la valeur choisie est la famille de la carte
+            if (valeurChoisie === "" || valeurChoisie === etatCarte || valeurChoisie === familleCarte) {
+                carte.style.display = "block";
+                nombreVisible = nombreVisible + 1;
+            } else {
+                carte.style.display = "none";
+            }
+        }
+
+        // Si aucune carte n'est visible, on affiche le message "aucun résultat"
+        if (nombreVisible === 0) {
+            document.getElementById('aucun-resultat').style.display = "block";
+        } else {
+            document.getElementById('aucun-resultat').style.display = "none";
+        }
+    }
+</script>
 
 {% endblock %}
