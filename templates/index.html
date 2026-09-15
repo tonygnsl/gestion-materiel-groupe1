@@ -29,11 +29,15 @@
 
 </div>
 
+{% set icones = {'Portable': 'fa-laptop', 'Fixe': 'fa-desktop', 'Impression': 'fa-print', 'Serveur': 'fa-server', 'Affichage': 'fa-tv'} %}
+
 <div class="liste">
 
     {% for element in donnees %}
 
     <article class="carte" data-etat="{{ element.etatParc }}" data-famille="{{ element.famille }}">
+
+        <div class="icone"><i class="fa-solid {{ icones.get(element.famille, 'fa-box') }}"></i></div>
 
         <h3>{{ element.designation }}</h3>
 
@@ -43,7 +47,7 @@
 
         <p><span>état :</span> {{ element.etatParc }}</p>
 
-        <p><span>date d'acquisition :</span> {{ element.dateAcquisition[8:10] }}/{{ element.dateAcquisition[5:7] }}/{{ element.dateAcquisition[0:4] }}</p>
+        <p><span>acquis le :</span> {{ element.dateAcquisition[8:10] }}/{{ element.dateAcquisition[5:7] }}/{{ element.dateAcquisition[0:4] }}</p>
 
         <a href="{{ url_for('detail', id=element.id) }}">
             Voir le détail

@@ -79,6 +79,12 @@ main {
     border: 1px solid #ddd;
 }
 
+.icone {
+    font-size: 2em;
+    margin-bottom: 8px;
+    color: #064c8d;
+}
+
 .carte a {
     display: inline-block;
     margin-top: 10px;
